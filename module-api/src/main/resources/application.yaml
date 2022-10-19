@@ -1,1 +1,21 @@
-
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+#    url: jdbc:mysql://aws-rds.c5h8ooqudx0o.ap-northeast-2.rds.amazonaws.com:3306/fastcampus
+    url: jdbc:mysql://localhost:3306/multimodule
+    username: primarchan
+    password: 1111
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: none # or `create`
+    properties:
+      hibernate:
+        show_sql: true # to System OutDataSourceConfiguration
+        format_sql: true
+        use_sql_comments: true
+        jdbc:
+          time_zone: Asia/Seoul # @CreatedDate 필드의 Time Zone 값 설정
