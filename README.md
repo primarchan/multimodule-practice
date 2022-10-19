@@ -17,4 +17,21 @@
 - 값으로 재정의 한다.
 - > `NPE(= Null Point Exception)` 일 경우, `Error Code` 를 `4001` 로 내린다.
 
+### Multi Module 구조에서 Gradle을 사용한 배포
+- `Multi Module` 구조에서는 원하는 `Module` 을 골라서 빌드&배포가 가능하다.
+- `Build Tool` 로는 `Gradle` 혹은 `Maven` 을 사용하는데 근래에 생성되는 프로젝트는 대부분 `Gradle` 을 사용한다.
+- `Gradle` 을 사용하여 빌드&배포를 하려면 `Gradle` 문법을 학습해야 한다.
+- > ex) 빌드 명령어 : `./gradlew clean :module-api:buildNeeded --stacktrace --info --refresh-dependencies -x test`
 
+### Profile이 필요한 이유
+- 실제 회사에서 개발할 땐 N 개의 `Profile` 을 설정한다.
+- > ex) `local`, `dev`, `test`, `prod`
+- 위와 같이 `Profile` 을 나누는 이유는 환경별로 설정해야 하는 `Property` 값들이 다르기 때문이다.
+
+### Profile사용 방법
+- 실제 프로젝트에서는 다음과 같은 파일로 환경별 Property를 구분한다.
+- > ex) `application-{env}.yaml`
+- > ex) `application-local.yaml`, `application-pdev.yaml`, `application-prod`
+- > ex) 환경에 따른 명령어 예시 : `java -jar "-Dspring.profiles.active={ 환경의 profile-name }" module-api-0.0.1-SNAPSHOT.jar`
+- ref : https://docs.spring.io/spring-boot/docs/2.1.9.RELEASE/reference/html/boot-features-external-config.html
+ 
