@@ -34,4 +34,24 @@
 - > ex) `application-local.yaml`, `application-pdev.yaml`, `application-prod`
 - > ex) 환경에 따른 명령어 예시 : `java -jar "-Dspring.profiles.active={ 환경의 profile-name }" module-api-0.0.1-SNAPSHOT.jar`
 - ref : https://docs.spring.io/spring-boot/docs/2.1.9.RELEASE/reference/html/boot-features-external-config.html
+
+### MySQL DB User 생성 가이드
+> ```sql
+> -- DB(스키마) 조회
+> show databases;  
+> -- DB(스키마) 생성
+> create database multimodule;  
+> -- USER 삭제
+> drop user primarchan;  
+> -- USER 생성
+> create user 'primarchan'@'localhost' identified by '1111';  
+> -- USER 조회
+> select `user` from `mysql`.`user`;  
+> -- USER 권한 조회
+> show grants for 'primarchan'@'localhost';
+> -- USER - DB(스키마) 권한 부여
+> grant all on `multimodule`.* to 'primarchan'@'localhost' with grant option;
+> -- UPDATE 사항 반영
+-- flush privileges;
+> ```
  
